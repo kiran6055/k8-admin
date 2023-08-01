@@ -6,8 +6,9 @@ data:
       - system:nodes
       rolearn: arn:aws:iam::505159336758:role/eksctl-spot-cluster-nodegroup-ng-NodeInstanceRole-1EBTS3VTRWQ4V
       username: system:node:{{EC2PrivateDNSName}}
-  mapUsers: "- userarn: rn:aws:iam::505159336758:user/roboshop-admin\n  username:
-    roboshop-admin \n"
+  mapUsers: |
+    - userarn: arn:aws:iam::505159336758:user/roboshop-admin
+      username: roboshop-admin
 kind: ConfigMap
 metadata:
   annotations:
