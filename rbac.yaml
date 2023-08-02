@@ -21,3 +21,27 @@ roleRef:
   kind: Role
   name: roboshop-admin-role
   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: cluster-readonly
+rules:
+- apiGroups: [""]
+  resources: ["secrets", "nodes", "namespaces", "deployments", "services"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-readonly-binding
+subjects:
+- kind: Group
+  name: roboshop-admin # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-readonly
+  apiGroup: rbac.authorization.k8s.io
