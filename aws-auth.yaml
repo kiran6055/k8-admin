@@ -13,9 +13,10 @@ kind: ConfigMap
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::505159336758:role/eksctl-spot-cluster-nodegroup-spo-NodeInstanceRole-1S9SU4S9EY95B\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- userarn: arn:aws:iam::505159336758:user/roboshop-admin\n  username: roboshop-admin\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2023-08-02T12:35:48Z","name":"aws-auth","namespace":"kube-system","resourceVersion":"1050","uid":"e60484d3-c73a-4e19-ad4a-94d1a3ae16eb"}}
+      {"apiVersion":"v1","data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::505159336758:role/eksctl-spot-cluster-nodegroup-spo-NodeInstanceRole-1S9SU4S9EY95B\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- userarn: arn:aws:iam::505159336758:user/roboshop-admin\n  username: roboshop-admin\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2023-08-02T12:35:48Z","name":"aws-auth","namespace":"kube-system","resourceVersion":"5546","uid":"e60484d3-c73a-4e19-ad4a-94d1a3ae16eb"}}
   creationTimestamp: "2023-08-02T12:35:48Z"
   name: aws-auth
   namespace: kube-system
-  resourceVersion: "5546"
+  resourceVersion: "13087"
   uid: e60484d3-c73a-4e19-ad4a-94d1a3ae16eb
+
