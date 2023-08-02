@@ -5,7 +5,7 @@ metadata:
 provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-056f999f70749ac93 # need to change this id we need to create a efs and need to copy that id here
+  fileSystemId: fs-06a68abdc0f2d6617 # need to change this id we need to create a efs and need to copy that id here
   directoryPerms: "700"
   gidRangeStart: "1000" # optional
   gidRangeEnd: "2000" # optional
