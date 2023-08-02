@@ -1,15 +1,28 @@
+#apiVersion: storage.k8s.io/v1
+#kind: StorageClass
+#metadata:
+#  name: efs-sc
+#provisioner: efs.csi.aws.com
+#parameters:
+#  provisioningMode: efs-ap
+#  fileSystemId: fs-01492d712d1c6fb9f # need to change this id we need to create a efs and need to copy that id here
+#  directoryPerms: "700"
+#  gidRangeStart: "1000" # optional
+#  gidRangeEnd: "2000" # optional
+#  basePath: "/dynamic_provisioning" # optional
+
+
+# this torageclass is for ebs
+
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: efs-sc
-provisioner: efs.csi.aws.com
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
 parameters:
-  provisioningMode: efs-ap
-  fileSystemId: fs-01492d712d1c6fb9f # need to change this id we need to create a efs and need to copy that id here
-  directoryPerms: "700"
-  gidRangeStart: "1000" # optional
-  gidRangeEnd: "2000" # optional
-  basePath: "/dynamic_provisioning" # optional
+  type: gp2 
 
 
   # this is for ebs need to be used before running the above file to install efsdriverskubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.21"
