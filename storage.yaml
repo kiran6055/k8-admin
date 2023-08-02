@@ -5,7 +5,7 @@ metadata:
 provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-0b57e442cf5e2e9ef # need to change this id we need to create a efs and need to copy that id here
+  fileSystemId: fs-01492d712d1c6fb9f # need to change this id we need to create a efs and need to copy that id here
   directoryPerms: "700"
   gidRangeStart: "1000" # optional
   gidRangeEnd: "2000" # optional
@@ -14,4 +14,3 @@ parameters:
 
   # this is for ebs need to be used before running the above file to install efsdriverskubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.21"
   #this is command for EFS driver install kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.5"
-  
