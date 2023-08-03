@@ -27,7 +27,6 @@ kind: ClusterRole
 metadata:
   # "namespace" omitted since ClusterRoles are not namespaced
   name: cluster-readonly
-  namespace: roboshop
 rules:
 - apiGroups: [""]
   resources: ["secrets", "nodes", "namespaces", "deployments", "services"]
@@ -38,7 +37,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cluster-readonly-binding
-  namespace: roboshop
 subjects:
 - kind: Group
   name: roboshop-admin # Name is case sensitive
