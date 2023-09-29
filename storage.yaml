@@ -28,3 +28,33 @@ parameters:
 
   # this is for ebs need to be used before running the above file to install efsdrivers kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.21"
   #this is command for EFS driver install kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.5"
+
+
+---
+apiVersion: v1  #here we are making a PVC claim of 14 gb storage
+kind: PersistentVolumeClaim
+metadata:
+  name: my-ebs-dynamic-pvc
+spec:
+  storageClassName: ebs-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 14Gi
+---
+apiVersion: v1 # here we are mounting it to path to container where the data has to be stored
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: my-ebs-volume
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: my-ebs-volume
+    persistentVolumeClaim:
+      claimName: my-ebs-dynamic-pvc
